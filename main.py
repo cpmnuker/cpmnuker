@@ -42,7 +42,7 @@ def banner(console):
     os.system('cls' if os.name == 'nt' else 'clear')
     console.print(f"[bold red][*] {base64.b64decode("V2VsY29tZSB0byBDUE1OdWtlciwgdGhlIGhhY2tlcnMgdG9vbGtpdA==").decode('utf-8')}[/bold red].", "\n")
     console.print("[bold green][*] Description[/bold green]: Car Parking Multiplayer Hacking Tool.")
-    console.print(f"[bold green][*] Telegram[/bold green]: [bold blue]@{base64.b64decode("Q1BNTnVrZXJPZmZpY2lhbA==").decode('utf-8')}[/bold blue] or [bold blue]@{base64.b64decode("Q1BNTnVrZXJDaGF0").decode('utf-8')}[/bold blue].")
+    console.print(f"[bold green][*] Telegram[/bold green]: [bold blue]@{base64.b64decode("Q1BNTnVrZXJPZmZpY2lhbA==").decode('utf-8')}[/bold blue].")
     console.print("[bold red]==================================================[/bold red]")
     console.print("[bold yellow][!] Note[/bold yellow]: Logout from CPM before using this tool !.", end="\n\n")
 
@@ -151,9 +151,9 @@ if __name__ == "__main__":
             console.print("[bold cyan](17): Unlock Smoke ~ 2K[/bold cyan]")
             console.print("[bold cyan](18): Change Race Wins ~ 1K[/bold cyan]")
             console.print("[bold cyan](19): Change Race Loses ~ 1K[/bold cyan]")
-            # console.print("[bold cyan](20): Clone Account ~ 5K[/bold cyan]")
-            # console.print("[bold cyan](21): Unlock all Cars ~ 3K[/bold cyan]")
-            # console.print("[bold cyan](22): Unlock Siren all Cars ~ 3.5K[/bold cyan]")
+            console.print("[bold cyan](20): Clone Account ~ 5K[/bold cyan]")
+            console.print("[bold cyan](21): Unlock all Cars ~ 3K[/bold cyan]")
+            console.print("[bold cyan](22): Unlock Siren all Cars ~ 3.5K[/bold cyan]")
             console.print("[bold cyan](0) : Exit[/bold cyan]", end="\n\n")
             service = IntPrompt.ask(f"[bold][?] Select a Service [red][1-{choices[-1]} or 0][/red][/bold]", choices=choices, show_choices=False)
             if service == 0: # Exit
@@ -471,24 +471,49 @@ if __name__ == "__main__":
                     console.print("[bold yellow][!] Please use valid values.[/bold yellow]")
                     sleep(2)
                     continue
-            # elif service == 20: # Clone Account
-            #     continue
-            # elif service == 21: # Unlock all cars
-            #     console.print("[bold yellow]! Note[/bold yellow]: this function takes a while to complete, please don't cancel.", end=None)
-            #     console.print("[bold cyan][%] Unlocking All Cars[/bold cyan]: ", end=None)
-            #     if cpm.unlock_all_cars():
-            #         console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
-            #         console.print("==================================")
-            #         answ = Prompt.ask("[bold cyan][?] Do You want to Exit ?[/bold cyan]", choices=["y", "n"], default="n")
-            #         if answ == "y": console.print(f"[bold yellow][!] Thank You for using our tool, please join our telegram channel[/bold yellow]: [bold blue]@{base64.b64decode("Q1BNTnVrZXJPZmZpY2lhbA==").decode('utf-8')}[/bold blue].")
-            #         else: continue
-            #     else:
-            #         console.print("[bold red]FAILED (✘)[/bold red]")
-            #         console.print("[bold yellow][!] Please try again.[/bold yellow]")
-            #         sleep(2)
-            #         continue
-            # elif service == 22: # Unlock Siren all cars
-            #     continue
+            elif service == 20: # Clone Account
+                console.print("[bold cyan]Please Enter Account Detalis[/bold cyan]:")
+                to_email = prompt_valid_value("[bold][?] Email[/bold]", "Email", password=False)
+                to_password = prompt_valid_value("[bold][?] Password[/bold]", "Password", password=False)
+                console.print("[bold cyan][%] Cloning your account[/bold cyan]: ", end=None)
+                if cpm.account_clone(to_email, to_password):
+                    console.print("[bold green]SUCCESSFUL.[/bold green]")
+                    console.print("==================================")
+                    answ = Prompt.ask("[bold cyan][?] Do You want to Exit ?[/bold cyan]", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold yellow][!] Thank You for using our tool, please join our telegram channel[/bold yellow]: [bold blue]@{__CHANNEL_USERNAME__}[/bold blue].")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED.[/bold red]")
+                    console.print("[bold yellow][!] Please try again.[/bold yellow]")
+                    sleep(2)
+                    continue
+            elif service == 21: # Unlock all cars
+                console.print("[bold yellow]! Note[/bold yellow]: this function takes a while to complete, please don't cancel.", end=None)
+                console.print("[bold cyan][%] Unlocking All Cars[/bold cyan]: ", end=None)
+                if cpm.unlock_all_cars():
+                    console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
+                    console.print("==================================")
+                    answ = Prompt.ask("[bold cyan][?] Do You want to Exit ?[/bold cyan]", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold yellow][!] Thank You for using our tool, please join our telegram channel[/bold yellow]: [bold blue]@{base64.b64decode("Q1BNTnVrZXJPZmZpY2lhbA==").decode('utf-8')}[/bold blue].")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED (✘)[/bold red]")
+                    console.print("[bold yellow][!] Please try again.[/bold yellow]")
+                    sleep(2)
+                    continue
+            elif service == 22: # Unlock Siren all cars
+                console.print("[bold cyan][%] Unlocking All Cars Siren[/bold cyan]: ", end=None)
+                if cpm.unlock_all_cars_siren():
+                    console.print("[bold green]SUCCESSFUL.[/bold green]")
+                    console.print("==================================")
+                    answ = Prompt.ask("[bold cyan][?] Do You want to Exit ?[/bold cyan]", choices=["y", "n"], default="n")
+                    if answ == "y": console.print(f"[bold yellow][!] Thank You for using our tool, please join our telegram channel[/bold yellow]: [bold blue]@{__CHANNEL_USERNAME__}[/bold blue].")
+                    else: continue
+                else:
+                    console.print("[bold red]FAILED.[/bold red]")
+                    console.print("[bold yellow][!] Please try again.[/bold yellow]")
+                    sleep(2)
+                    continue
             else:
                 continue
             break
