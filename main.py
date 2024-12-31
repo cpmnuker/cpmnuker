@@ -338,7 +338,7 @@ if __name__ == "__main__":
                     sleep(2)
                     continue
             elif service == 11: # Unlock All Paid Cars + Siren
-                console.print("[bold yellow]! Note[/bold yellow]: this function takes a while to complete, please don't cancel.", end=None)
+                console.print("[bold yellow]! Note[/bold yellow]: this function takes a while to complete, please don't cancel.")
                 console.print("[bold cyan][%] Unlocking All Paid Cars[/bold cyan]: ", end=None)
                 if cpm.unlock_paid_cars():
                     console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
@@ -488,7 +488,7 @@ if __name__ == "__main__":
                     sleep(2)
                     continue
             elif service == 21: # Unlock all cars
-                console.print("[bold yellow]! Note[/bold yellow]: this function takes a while to complete, please don't cancel.", end=None)
+                console.print("[bold yellow]! Note[/bold yellow]: this function takes a while to complete, please don't cancel.")
                 console.print("[bold cyan][%] Unlocking All Cars[/bold cyan]: ", end=None)
                 if cpm.unlock_all_cars():
                     console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
